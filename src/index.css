@@ -1,0 +1,381 @@
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Layout Reset */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto; /* Enable vertical scrolling */
+  background-color: #000;
+}
+
+/* Scrollable container for all panels */
+.dashboard-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Shared Panel Styles */
+.panel {
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  border: 1px solid white;
+  box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* ---------------- PANEL 1 ---------------- */
+.panel1 {
+  background-color: #000;
+  z-index: 6;
+  width: 15vw;
+  height: 18vh;
+  max-height: 80px;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  animation: panel1Anim 2s ease-out 0s forwards;
+}
+
+@keyframes panel1Anim {
+  0% {
+    opacity: 0;
+    width: 15vw;
+    height: 18vh;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed; /* Always fixed as header */
+  }
+}
+
+/* ---------------- PANEL 2 ---------------- */
+.panel2 {
+  background-color: #000;
+  z-index: 5;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: clamp(320px, 100%, 66%);
+  min-width: 320px;
+  max-width: 100%;
+  animation: panel2Anim 2s ease-out 0.3s forwards;
+  position: fixed; /* Start as fixed */
+}
+
+@keyframes panel2Anim {
+  0% {
+    opacity: 0;
+    width: 15vw;
+    height: 18vh;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 1;
+    width: 66%;
+    height: 215px;
+    top: 85px;
+    left: 0;
+    transform: translate(0%, 0%);
+    position: absolute; /* Switch to absolute after anim */
+  }
+}
+
+/* ---------------- PANEL 3 ---------------- */
+.panel3 {
+  background-color: #000;
+  z-index: 4;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: clamp(300px, 33%, 400px);
+  animation: panel3Anim 2s ease-out 0.6s forwards;
+  position: fixed;
+}
+
+@keyframes panel3Anim {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    width: 15vw;
+    height: 18vh;
+    top: 50vh;
+    left: 50vw;
+  }
+  100% {
+    opacity: 1;
+    top: 85px;
+    left: calc(66% + 10px);
+    transform: translate(0%, 0%);
+    width: 33%;
+    height: 480px;
+    max-height: calc(100vh - 100px);
+    position: absolute;
+  }
+}
+
+/* ---------------- PANEL 4 ---------------- */
+.panel4 {
+  background-color: #000;
+  z-index: 3;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: clamp(320px, 66%, 800px);
+  animation: panel4Anim 2s ease-out 0.9s forwards;
+  position: fixed;
+}
+
+@keyframes panel4Anim {
+  0% {
+    opacity: 0;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 15vw;
+    height: 18vh;
+  }
+  100% {
+    opacity: 1;
+    top: calc(85px + 225px);
+    left: 0;
+    transform: none;
+    width: 66%;
+    height: 255px;
+    position: absolute;
+  }
+}
+
+/* ---------------- PANEL 5 ---------------- */
+.panel5 {
+  background-color: #000;
+  z-index: 2;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: clamp(320px, 66%, 700px);
+  animation: panel5Anim 2s ease-out 1.2s forwards;
+  position: fixed;
+}
+
+@keyframes panel5Anim {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    top: 50vh;
+    left: 50vw;
+    width: 15vw;
+    height: 18vh;
+  }
+  100% {
+    opacity: 1;
+    top: calc(85px + 215px + 275px);
+    left: 0;
+    transform: translate(0, 0);
+    width: 66%;
+    height: 200px;
+    position: absolute;
+  }
+}
+
+/* ---------------- PANEL 6 ---------------- */
+.panel6 {
+  background-color: #000;
+  z-index: 2;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: clamp(260px, 30%, 360px);
+  animation: panel6Anim 2s ease-out 1.2s forwards;
+  position: fixed;
+}
+
+@keyframes panel6Anim {
+  0% {
+    opacity: 0;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 15vw;
+    height: 18vh;
+  }
+  100% {
+    opacity: 1;
+    top: calc(85px + 215px + 275px);
+    left: calc(66.7%);
+    transform: translate(0, 0);
+    width: 33%;
+    height: 200px;
+    position: absolute;
+  }
+}
+
+.panel2,
+.panel3,
+.panel4,
+.panel5,
+.panel6 {
+  overflow-y: auto;   /* Enables scrolling inside the panel */
+  overflow-x: hidden; /* Prevent sideways scrolling */
+  max-height: calc(100vh - 120px); /* Adjust depending on layout */
+}
+
+/* Mobile Overrides: General Settings */
+@media (max-width: 500px) {
+  html, body {
+    overflow-y: auto;
+  }
+
+  /* Panel 1: Fixed header */
+  .panel1 {
+    height: 10vh;
+    max-height: 80px;
+  }
+
+  /* ---------------- PANEL 2 ---------------- */
+  .panel2 {
+    animation: panel2MobileAnim 2s ease-out 0.3s forwards;
+  }
+
+  @keyframes panel2MobileAnim {
+    0% {
+      opacity: 0;
+      width: 15vw;
+      height: 18vh;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      opacity: 1;
+      width: 100vw;
+      height: calc(210px); /* occupies most of viewport height */
+      top: 85px;
+      left: 0;
+      transform: none;
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+
+  /* ---------------- PANEL 3 ---------------- */
+  .panel3 {
+    animation: panel3MobileAnim 2s ease-out 0.6s forwards;
+  }
+
+  @keyframes panel3MobileAnim {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      width: 15vw;
+      height: 18vh;
+      top: 50vh;
+      left: 50vw;
+    }
+    100% {
+      opacity: 1;
+      width: 100vw;
+      height: calc(360px);
+      top: calc(85px + 220px);
+      left: 0;
+      transform: none;
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+
+  /* ---------------- PANEL 4 ---------------- */
+  .panel4 {
+    animation: panel4MobileAnim 2s ease-out 0.9s forwards;
+  }
+
+  @keyframes panel4MobileAnim {
+    0% {
+      opacity: 0;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+      width: 15vw;
+      height: 18vh;
+    }
+    100% {
+      opacity: 1;
+      width: 100vw;
+      height: calc(500px);
+      top: calc(85px + 590px);
+      left: 0;
+      transform: none;
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+
+  /* ---------------- PANEL 5 ---------------- */
+  .panel5 {
+    animation: panel5MobileAnim 2s ease-out 1.2s forwards;
+  }
+
+  @keyframes panel5MobileAnim {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      top: 50vh;
+      left: 50vw;
+      width: 15vw;
+      height: 18vh;
+    }
+    100% {
+      opacity: 1;
+      width: 100vw;
+      height: calc(200px);
+      top: calc(85px + 1100px);
+      left: 0;
+      transform: none;
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+
+  /* ---------------- PANEL 6 ---------------- */
+  .panel6 {
+    animation: panel6MobileAnim 2s ease-out 1.2s forwards;
+  }
+
+  @keyframes panel6MobileAnim {
+    0% {
+      opacity: 0;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+      width: 15vw;
+      height: 18vh;
+    }
+    100% {
+      opacity: 1;
+      width: 100vw;
+      height: calc(200px);
+      top: calc(85px + 1310px);
+      left: 0;
+      transform: none;
+      position: absolute;
+      overflow-y: auto;
+    }
+  }
+}
